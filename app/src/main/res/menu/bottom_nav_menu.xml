@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menu_ITM_profile"
+        android:title="profile"
+        android:icon="@drawable/profile_icon"/>
+
+    <item android:id="@+id/menu_ITM_search"
+        android:title="search"
+        android:icon="@drawable/search_icon"/>
+
+    <item android:id="@+id/TVShow_ITM_search"
+        android:title="TV shows"
+        android:icon="@drawable/tv_icon"/>
+
+    <item android:id="@+id/movie_ITM_search"
+        android:title="movies"
+        android:icon="@drawable/movie_icon"/>
+
+
+</menu>
