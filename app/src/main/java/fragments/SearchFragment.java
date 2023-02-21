@@ -63,12 +63,7 @@ public class SearchFragment extends Fragment {
     }
 
     public void setAdapter() {
-        Media[] media = {new Media().setQid(MediaType.movie)
-                .setImage(new Image().setImageUrl("https://m.media-amazon.com/imag" +
-                        "es/M/MV5BODcwNWE3OTMtMDc3MS00NDFjLWE1OTAtNDU3NjgxODMxY2UyXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg")).setL("one"),
-                new Media().setQid(MediaType.movie)
-                        .setImage(new Image().setImageUrl("https://m.media-amazon.com/imag" +
-                                "es/M/MV5BODcwNWE3OTMtMDc3MS00NDFjLWE1OTAtNDU3NjgxODMxY2UyXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg")).setL("one")};
+        Media[] media = new Media[0];
         searchAdapter = new SearchAdapter(media, user, onAddToListPressed);
         search_LST_result.setAdapter(searchAdapter);
     }
