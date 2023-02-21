@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/profile_LBL_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="56dp"
+        android:text="username"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="@color/black"
+        app:cardCornerRadius="150dp">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            app:cardCornerRadius="150dp"
+
+            >
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profile_IMG_profilePic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background" />
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/profile_LBL_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="180dp"
+        android:text="I watched:"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:id="@+id/profile_slot_countSlot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_LBL_count"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/profile_LBL_tvCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="24sp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/profile_LBL_tvShow"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:text="TV shows"
+            android:textSize="24sp"
+            />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/profile_LBL_movieCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:text="1"
+            android:textSize="24sp" />
+
+        <com.google.android.material.textview.MaterialTextView
+
+            android:id="@+id/profile_LBL_movie"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:text="movies"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/profile_LBL_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_slot_countSlot"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="My Favorites:"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/profile_slot_BTNSlot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_LBL_favorite"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/profile_BTN_all"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="1dp"
+            android:layout_weight="1"
+            android:text="All" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/profile_BTN_TVShows"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_weight="1"
+            android:text="TV shows" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/profile_BTN_movies"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:text="Movies" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/profile_slot_BTNSlot">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/profile_LST_favorites"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/media_item" />
+    </LinearLayout>
+
+
+</RelativeLayout>

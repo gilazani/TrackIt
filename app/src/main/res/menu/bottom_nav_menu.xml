@@ -9,11 +9,11 @@
         android:title="search"
         android:icon="@drawable/search_icon"/>
 
-    <item android:id="@+id/TVShow_ITM_search"
+    <item android:id="@+id/menu_ITM_TVShow"
         android:title="TV shows"
         android:icon="@drawable/tv_icon"/>
 
-    <item android:id="@+id/movie_ITM_search"
+    <item android:id="@+id/menu_ITM_movie"
         android:title="movies"
         android:icon="@drawable/movie_icon"/>
 

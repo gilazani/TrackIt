@@ -7,18 +7,36 @@
     tools:context=".MainActivity">
 
     <FrameLayout
+        android:id="@+id/main_FRAME_page"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/main_BNV_toolbar"/>
+        android:layout_above="@id/main_BNV_toolbar"
+        android:layout_below="@id/main_slot_logoutSlot"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        app:labelVisibilityMode="labeled"
         android:id="@+id/main_BNV_toolbar"
+        app:labelVisibilityMode="labeled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_menu"
         />
+<LinearLayout
+    android:id="@+id/main_slot_logoutSlot"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/logoutSlot"
+    >
+    <ImageView
+        android:id="@+id/main_BTN_logout"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/logout_logo"
+        android:layout_marginStart="350dp"
+        android:layout_marginTop="5dp"
+        />
+</LinearLayout>
+
 
 
 </RelativeLayout>

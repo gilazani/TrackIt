@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fragments.MovieFragment">
+
+    <LinearLayout
+        android:id="@+id/TVShow_slot_BTNSlot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/TVShow_BTN_watched"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_weight="1.1"
+            android:textSize="12dp"
+            android:text="watched" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/TVShow_BTN_favorite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1.1"
+            android:textSize="12dp"
+            android:text="favorite" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/TVShow_slot_BTNSlot">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/TVShow_LST_TVShowList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/media_item" />
+    </LinearLayout>
+
+
+</RelativeLayout>
