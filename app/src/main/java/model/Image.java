@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Image implements Serializable {
     private String imageUrl = "";
-    private int height = 0 ;
+    private int height = 0;
     private int width = 0;
 
     public Image() {

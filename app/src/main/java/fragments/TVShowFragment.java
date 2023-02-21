@@ -47,9 +47,9 @@ public class TVShowFragment extends Fragment {
             TVShowAdapter = new TVShowAdapter(getUserListByLastClicked(), onMediaUnFavorite, onRemovedMedia);
             TVShow_LST_TVShowList.setAdapter(TVShowAdapter);
             TVShow_LST_TVShowList.getAdapter().notifyDataSetChanged();
-            FirebaseDataManagement.getInstance().addMedia(new UserMediaTracker(media,user.getMediaIDFavorite(media.getId())),user);//will override
+            FirebaseDataManagement.getInstance().addMedia(new UserMediaTracker(media, user.getMediaIDFavorite(media.getId())), user);//will override
         }
-    } ;
+    };
 
     private OnRemovedMedia onRemovedMedia = new OnRemovedMedia() {
         @Override
@@ -59,7 +59,7 @@ public class TVShowFragment extends Fragment {
             TVShowAdapter = new TVShowAdapter(getUserListByLastClicked(), onMediaUnFavorite, onRemovedMedia);
             TVShow_LST_TVShowList.setAdapter(TVShowAdapter);
             TVShow_LST_TVShowList.getAdapter().notifyDataSetChanged();
-            FirebaseDataManagement.getInstance().deleteMedia(media.getId(),user);
+            FirebaseDataManagement.getInstance().deleteMedia(media.getId(), user);
         }
     };
 
@@ -74,10 +74,10 @@ public class TVShowFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_tv_show,container,false);
+        View view = inflater.inflate(R.layout.fragment_tv_show, container, false);
         initViews(view);
 
-        if(updateLater){
+        if (updateLater) {
             setAdapter();
             setViews();
         }
@@ -86,7 +86,7 @@ public class TVShowFragment extends Fragment {
 
     }
 
-    public void initViews(View view){
+    public void initViews(View view) {
         TVShow_BTN_watched = view.findViewById(R.id.TVShow_BTN_watched);
         TVShow_BTN_favorite = view.findViewById(R.id.TVShow_BTN_favorite);
         TVShow_LST_TVShowList = view.findViewById(R.id.TVShow_LST_TVShowList);
@@ -97,7 +97,7 @@ public class TVShowFragment extends Fragment {
     public void setUser(User user) {
         this.user = user;
         setAdapter();// will change update later if not fit
-        if(!updateLater) {
+        if (!updateLater) {
             setViews();
         }
     }

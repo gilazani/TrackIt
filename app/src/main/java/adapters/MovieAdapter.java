@@ -31,7 +31,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     }
 
 
-
     @NonNull
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -45,9 +44,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         UserMediaTracker userMediaTracker = getItem(position);
         holder.media_LBL_mediaTitle.setText("" + userMediaTracker.getMedia().getL());
 
-        if(userMediaTracker.getFavorite()){
+        if (userMediaTracker.getFavorite()) {
             holder.media_icon_isFavorite.setImageResource(R.drawable.heart);
-        }else{
+        } else {
             holder.media_icon_isFavorite.setImageResource(R.drawable.empty_heart);
         }
 
@@ -86,9 +85,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             media_icon_isFavorite.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(userMediaTrackers.get(getAdapterPosition()).getFavorite()) {
+                    if (userMediaTrackers.get(getAdapterPosition()).getFavorite()) {
                         media_icon_isFavorite.setImageResource(R.drawable.empty_heart);
-                    }else{
+                    } else {
                         media_icon_isFavorite.setImageResource(R.drawable.heart);
                     }
                     Media media = userMediaTrackers.get(getAdapterPosition()).getMedia();

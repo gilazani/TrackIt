@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
 import callbacks.OnSearchResultReturn;
 import enums.MediaType;
 import utils.FirebaseDataManagement;
@@ -24,23 +25,23 @@ public class User implements Serializable {
         numberOfTVShows = 0;
     }
 
-    public boolean checkMediaInList(String movieID){
+    public boolean checkMediaInList(String movieID) {
         for (int i = 0; i < mediaList.size(); i++) {
-            if(mediaList.get(i).getMedia().getId().equals(movieID)){
+            if (mediaList.get(i).getMedia().getId().equals(movieID)) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean addNewMedia(Media media){
+    public boolean addNewMedia(Media media) {
         //add new media
-        if(checkMediaInList(media.getId())){
+        if (checkMediaInList(media.getId())) {
             return false;
         }
-        if(media.getQid()== MediaType.movie){
+        if (media.getQid() == MediaType.movie) {
             numberOfMovies++;
-        }else{
+        } else {
             numberOfTVShows++;
         }
         UserMediaTracker mediaAndPref = new UserMediaTracker(media, false);
@@ -49,7 +50,7 @@ public class User implements Serializable {
         return true;
     }
 
-    public void setMediaListFromDB(ArrayList<UserMediaTracker> mediaList){
+    public void setMediaListFromDB(ArrayList<UserMediaTracker> mediaList) {
         this.mediaList = mediaList;
         numberOfMovies = 0;
         numberOfTVShows = 0;
@@ -57,7 +58,7 @@ public class User implements Serializable {
             //init movies and tv shows number
             if (mediaList.get(i).getMedia().getQid() == MediaType.movie) {
                 numberOfMovies++;
-            }else{
+            } else {
                 numberOfTVShows++;
             }
         }
@@ -114,20 +115,20 @@ public class User implements Serializable {
         return this;
     }
 
-    public String getUsername(){
+    public String getUsername() {
         return username;
     }
 
     public ArrayList<UserMediaTracker> getFavoriteMovieMediaList() {
-        return getFilteredList(MediaType.movie,MediaType.movie,true, true);
+        return getFilteredList(MediaType.movie, MediaType.movie, true, true);
     }
 
-    private ArrayList<UserMediaTracker> getFilteredList(MediaType type1,MediaType type2, boolean isFavorite1, boolean isFavorite2) {
+    private ArrayList<UserMediaTracker> getFilteredList(MediaType type1, MediaType type2, boolean isFavorite1, boolean isFavorite2) {
         //2 of every one for all - option filtered list
         ArrayList<UserMediaTracker> filtered = new ArrayList<>();
         for (int i = 0; i < mediaList.size(); i++) {
-            if((mediaList.get(i).getMedia().getQid() == type1 || mediaList.get(i).getMedia().getQid() == type2)
-                    && (mediaList.get(i).getFavorite() == isFavorite1 || mediaList.get(i).getFavorite() == isFavorite2)){
+            if ((mediaList.get(i).getMedia().getQid() == type1 || mediaList.get(i).getMedia().getQid() == type2)
+                    && (mediaList.get(i).getFavorite() == isFavorite1 || mediaList.get(i).getFavorite() == isFavorite2)) {
                 filtered.add(mediaList.get(i));
             }
         }
@@ -135,16 +136,16 @@ public class User implements Serializable {
     }
 
     public ArrayList<UserMediaTracker> getFavoriteTVMediaList() {
-        return getFilteredList(MediaType.tvSeries,MediaType.tvSeries, true, true);
+        return getFilteredList(MediaType.tvSeries, MediaType.tvSeries, true, true);
     }
 
     public ArrayList<UserMediaTracker> getFavoriteAllMediaList() {
-        return getFilteredList(MediaType.tvSeries,MediaType.movie,true, true);
+        return getFilteredList(MediaType.tvSeries, MediaType.movie, true, true);
     }
 
     public void changeMediaUnFavorite(String id) {
         for (int i = 0; i < mediaList.size(); i++) {
-            if(mediaList.get(i).getMedia().getId().equals(id)){
+            if (mediaList.get(i).getMedia().getId().equals(id)) {
                 mediaList.get(i).setFavorite(false);
             }
         }
@@ -156,7 +157,7 @@ public class User implements Serializable {
 
     public void changeMediaToOppositeFavorite(String id) {
         for (int i = 0; i < mediaList.size(); i++) {
-            if(mediaList.get(i).getMedia().getId().equals(id)){
+            if (mediaList.get(i).getMedia().getId().equals(id)) {
                 mediaList.get(i).setFavorite(!mediaList.get(i).getFavorite());
                 return;
             }

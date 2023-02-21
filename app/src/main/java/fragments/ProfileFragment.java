@@ -54,15 +54,15 @@ public class ProfileFragment extends Fragment {
             favoriteAdapter = new FavoriteAdapter(getUserFavoriteListByLastClicked(), onMediaUnFavorite);
             profile_LST_favorites.setAdapter(favoriteAdapter);
             profile_LST_favorites.getAdapter().notifyDataSetChanged();
-            FirebaseDataManagement.getInstance().addMedia(new UserMediaTracker(media, false),user);//will override
+            FirebaseDataManagement.getInstance().addMedia(new UserMediaTracker(media, false), user);//will override
         }
-    } ;
+    };
 
     private ArrayList<UserMediaTracker> getUserFavoriteListByLastClicked() {
-        if(lastMediaClickedOn == FavoriteLastMediaClickedOn.all){
+        if (lastMediaClickedOn == FavoriteLastMediaClickedOn.all) {
             return user.getFavoriteAllMediaList();
         }
-        if(lastMediaClickedOn == FavoriteLastMediaClickedOn.movie){
+        if (lastMediaClickedOn == FavoriteLastMediaClickedOn.movie) {
             return user.getFavoriteMovieMediaList();
         }
         return user.getFavoriteTVMediaList();

@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void goToMain() {
         Intent startIntent = new Intent(this, MainActivity.class);
-        startIntent.putExtra(MainActivity.KEY_USER,user);
+        startIntent.putExtra(MainActivity.KEY_USER, user);
         startActivity(startIntent);
         finish();
     }
@@ -56,9 +56,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private void connectUser() {
         FirebaseUser user = mAuth.getCurrentUser();
-        if (user == null){
+        if (user == null) {
             login();
-        }else{
+        } else {
             loadUserData(user);
             goToMain();
         }
@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent signInIntent = AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
-               // .setLogo(R.mipmap.ic_launcher_round)
+                // .setLogo(R.mipmap.ic_launcher_round)
                 .build();
         signInLauncher.launch(signInIntent);
     }

@@ -34,7 +34,7 @@ import model.UserMediaTracker;
 import utils.FirebaseDataManagement;
 import utils.MediaDataCollector;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     public static final String KEY_USER = "KEY_USER";
     private ProfileFragment profileFragment;
@@ -61,26 +61,26 @@ public class MainActivity extends AppCompatActivity{
         }
     };
 
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         initViews();
 
         setAndActivateLogout();
-        
+
         setFragments();
 
         setUser();
-        
+
         setBNavigationBar();
 
         setCallback();
 
         setMediaTracker();
-        
+
     }
 
 
@@ -106,24 +106,24 @@ public class MainActivity extends AppCompatActivity{
                 });
     }
 
-    private void setMediaTracker(){
-            MediaListChanged mediaListChanged = new MediaListChanged() {
-                @Override
-                public void setMediaList(ArrayList<UserMediaTracker> mediaList) {
-                    user.setMediaListFromDB(mediaList);
-                }
+    private void setMediaTracker() {
+        MediaListChanged mediaListChanged = new MediaListChanged() {
+            @Override
+            public void setMediaList(ArrayList<UserMediaTracker> mediaList) {
+                user.setMediaListFromDB(mediaList);
+            }
 
-                @Override
-                public void notifyMediaListChange() {
-                    profileFragment.setUser(user);
-                    searchFragment.setUser(user);
-                    tvShowFragment.setUser(user);
-                    movieFragment.setUser(user);
+            @Override
+            public void notifyMediaListChange() {
+                profileFragment.setUser(user);
+                searchFragment.setUser(user);
+                tvShowFragment.setUser(user);
+                movieFragment.setUser(user);
 
-                }
-            };
-            FirebaseDataManagement.getInstance().getMediaList(user, mediaListChanged);
-        }
+            }
+        };
+        FirebaseDataManagement.getInstance().getMediaList(user, mediaListChanged);
+    }
 
 
     private void setUser() {

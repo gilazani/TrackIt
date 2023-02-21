@@ -31,7 +31,7 @@ public class MediaDataCollector {
     private OnSearchResultReturn onSearchResultReturn;
     private NotifySearchResultLocked notifySearchResultLocked;
 
-    private MediaDataCollector(Context context){
+    private MediaDataCollector(Context context) {
         this.context = context;
     }
 
@@ -51,37 +51,37 @@ public class MediaDataCollector {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url("https://online-movie-database.p.rapidapi.com/auto-complete?q="+ search)
+                .url("https://online-movie-database.p.rapidapi.com/auto-complete?q=" + search)
                 .get()
                 .addHeader("X-RapidAPI-Key", BuildConfig.XRapidAPIKey)
                 .addHeader("X-RapidAPI-Host", "online-movie-database.p.rapidapi.com")
                 .build();
 
 
-           Thread t = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        final Response response = client.newCall(request).execute();
-                        String jsonSearchResult = response.body().string();
-                        JSONObject json= new JSONObject(jsonSearchResult); // Your json string here
-                        String arrResult = json.optString("d");
-                        Type type = new TypeToken<Media[]>() {}.getType();
-                        Media[] media = new Gson().fromJson(arrResult, type);
-//                        Media[] media = {new Media().setQid(MediaType.movie)
-//                                .setImage(new Image().setImageUrl("https://m.media-amazon.com/imag" +
-//                                        "es/M/MV5BODcwNWE3OTMtMDc3MS00NDFjLWE1OTAtNDU3NjgxODMxY2UyXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg")).setL("one")};
-                        onSearchResultReturn.updateSearchResult(media);
-                    } catch (Exception e){}
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    final Response response = client.newCall(request).execute();
+                    String jsonSearchResult = response.body().string();
+                    JSONObject json = new JSONObject(jsonSearchResult); // Your json string here
+                    String arrResult = json.optString("d");
+                    Type type = new TypeToken<Media[]>() {
+                    }.getType();
+                    Media[] media = new Gson().fromJson(arrResult, type);
+
+                    onSearchResultReturn.updateSearchResult(media);
+                } catch (Exception e) {
+                }
 
 //                    } catch (IOException e) {
 //                        e.printStackTrace();
 //                    } catch (JSONException e) {
 //                        e.printStackTrace();
 //                    }
-                }
-            });
-           t.start();
+            }
+        });
+        t.start();
         try {
             t.join();
             notifySearchResultLocked.updateSearchAdapter();

@@ -6,5 +6,6 @@ import model.UserMediaTracker;
 
 public interface MediaListChanged {
     void setMediaList(ArrayList<UserMediaTracker> mediaList);
+
     void notifyMediaListChange();
 }

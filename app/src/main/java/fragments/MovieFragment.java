@@ -46,9 +46,9 @@ public class MovieFragment extends Fragment {
             movieAdapter = new MovieAdapter(getUserListByLastClicked(), onMediaUnFavorite, onRemovedMedia);
             movie_LST_movieList.setAdapter(movieAdapter);
             movie_LST_movieList.getAdapter().notifyDataSetChanged();
-            FirebaseDataManagement.getInstance().addMedia(new UserMediaTracker(media,user.getMediaIDFavorite(media.getId())),user);//will override
+            FirebaseDataManagement.getInstance().addMedia(new UserMediaTracker(media, user.getMediaIDFavorite(media.getId())), user);//will override
         }
-    } ;
+    };
 
     private OnRemovedMedia onRemovedMedia = new OnRemovedMedia() {
         @Override
@@ -58,7 +58,7 @@ public class MovieFragment extends Fragment {
             movieAdapter = new MovieAdapter(getUserListByLastClicked(), onMediaUnFavorite, onRemovedMedia);
             movie_LST_movieList.setAdapter(movieAdapter);
             movie_LST_movieList.getAdapter().notifyDataSetChanged();
-            FirebaseDataManagement.getInstance().deleteMedia(media.getId(),user);
+            FirebaseDataManagement.getInstance().deleteMedia(media.getId(), user);
         }
     };
 
@@ -66,17 +66,17 @@ public class MovieFragment extends Fragment {
         if (lastMediaClickedOn == LastMediaClickedOn.favorite) {
             return user.getFavoriteMovieMediaList();
         }
-            return user.getMovieList();
+        return user.getMovieList();
     }
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_movie,container,false);
+        View view = inflater.inflate(R.layout.fragment_movie, container, false);
         initViews(view);
 
-        if(updateLater){
+        if (updateLater) {
             setAdapter();
             setViews();
         }
@@ -85,7 +85,7 @@ public class MovieFragment extends Fragment {
 
     }
 
-    public void initViews(View view){
+    public void initViews(View view) {
         movie_BTN_watched = view.findViewById(R.id.movie_BTN_watched);
         movie_BTN_favorite = view.findViewById(R.id.movie_BTN_favorite);
         movie_LST_movieList = view.findViewById(R.id.movie_LST_movieList);
@@ -96,7 +96,7 @@ public class MovieFragment extends Fragment {
     public void setUser(User user) {
         this.user = user;
         setAdapter();// will change update later if not fit
-        if(!updateLater) {
+        if (!updateLater) {
             setViews();
         }
     }

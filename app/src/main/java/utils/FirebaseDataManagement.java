@@ -21,7 +21,7 @@ public class FirebaseDataManagement {
     private static FirebaseDataManagement firebaseDataManagement = null;
 
 
-    private FirebaseDataManagement(){
+    private FirebaseDataManagement() {
 
     }
 
@@ -41,20 +41,20 @@ public class FirebaseDataManagement {
         listRef.child(user.getUserID()).child(mediaAndPref.getMedia().getId()).setValue(mediaAndPref);
     }
 
-    public void deleteMedia(String mediaID, User user){
+    public void deleteMedia(String mediaID, User user) {
         database = FirebaseDatabase.getInstance();
         DatabaseReference listRef = database.getReference("mediaList");
         listRef.child(user.getUserID()).child(mediaID).removeValue();
     }
 
-    public void getMediaList(User user, MediaListChanged mediaListChanged){
+    public void getMediaList(User user, MediaListChanged mediaListChanged) {
         ArrayList<UserMediaTracker> userMediaTrackers = new ArrayList<UserMediaTracker>();
         database = FirebaseDatabase.getInstance();
         DatabaseReference listRef = database.getReference("mediaList").child(user.getUserID());
         listRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot media:snapshot.getChildren()) {
+                for (DataSnapshot media : snapshot.getChildren()) {
                     Image image = new Image(media.child("media").child("image").getValue(Image.class));
                     UserMediaTracker userMediaTracker = media.getValue(UserMediaTracker.class);
                     userMediaTracker.getMedia().setImage(image);

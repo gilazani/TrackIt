@@ -32,7 +32,6 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
     }
 
 
-
     @NonNull
     @Override
     public FavoriteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -46,15 +45,15 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
         UserMediaTracker userMediaTracker = getItem(position);
         holder.favorite_LBL_mediaTitle.setText("" + userMediaTracker.getMedia().getL());
 
-        if(userMediaTracker.getMedia().getQid() == MediaType.movie) {
+        if (userMediaTracker.getMedia().getQid() == MediaType.movie) {
             holder.favorite_icon_movieOrTV.setImageResource(R.drawable.movie_icon);
-        }else{
+        } else {
             holder.favorite_icon_movieOrTV.setImageResource(R.drawable.tv_icon);
         }
 
-        if(userMediaTracker.getFavorite()){
+        if (userMediaTracker.getFavorite()) {
             holder.favorite_icon_isFavorite.setImageResource(R.drawable.heart);
-        }else{
+        } else {
             holder.favorite_icon_isFavorite.setImageResource(R.drawable.empty_heart);
         }
 

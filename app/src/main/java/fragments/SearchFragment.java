@@ -43,7 +43,7 @@ public class SearchFragment extends Fragment {
     private OnAddToListPressed onAddToListPressed = new OnAddToListPressed() {
         @Override
         public void updateList(Media media) {
-            FirebaseDataManagement.getInstance().addMedia(new UserMediaTracker(media, false),user);//false as default
+            FirebaseDataManagement.getInstance().addMedia(new UserMediaTracker(media, false), user);//false as default
         }
     };
 
@@ -51,7 +51,7 @@ public class SearchFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_search,container,false);
+        View view = inflater.inflate(R.layout.fragment_search, container, false);
         initViews(view);
 
         setOnInput();
@@ -74,11 +74,11 @@ public class SearchFragment extends Fragment {
                     (i == KeyEvent.KEYCODE_ENTER)) {
                 // Perform action on key press
                 MediaDataCollector.getInstance().getSearchResult(search_input_search.getText().toString());
-                while(!searchArrived){
+                while (!searchArrived) {
                     //delay until search result arrived
                 }
-                searchArrived =false;
-                search_LST_result.setAdapter(new SearchAdapter(media, user,onAddToListPressed));
+                searchArrived = false;
+                search_LST_result.setAdapter(new SearchAdapter(media, user, onAddToListPressed));
                 search_LST_result.getAdapter().notifyDataSetChanged();
                 return true;
             }
@@ -86,7 +86,7 @@ public class SearchFragment extends Fragment {
         });
     }
 
-    public void initViews(View view){
+    public void initViews(View view) {
         search_input_search = view.findViewById(R.id.search_input_search);
 
         search_LST_result = view.findViewById(R.id.search_LST_result);
